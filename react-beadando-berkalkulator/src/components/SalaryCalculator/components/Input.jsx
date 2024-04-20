@@ -141,8 +141,4 @@ function Input() {
   );
 }
 
-Input.propTypes = {
-  calculate: PropTypes.func,
-};
-
 export default Input;

@@ -17,10 +17,4 @@ const HouseholdSalaryCalculator = () => {
   );
 };
 
-HouseholdSalaryCalculator.propTypes = {
-  calculate: PropTypes.func,
-  szja25: PropTypes.func,
-  szja25Discount: PropTypes.bool,
-};
-
 export default HouseholdSalaryCalculator;

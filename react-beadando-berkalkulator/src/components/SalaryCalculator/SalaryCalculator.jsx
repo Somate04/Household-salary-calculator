@@ -11,8 +11,4 @@ const SalaryCalculator = () => {
   );
 };
 
-SalaryCalculator.propTypes = {
-  calculate: PropTypes.func,
-};
-
 export default SalaryCalculator;
