@@ -71,21 +71,10 @@ function Input() {
     calculate(netto);
   };
 
-  const Minus5 = () => {
-    setValue(value * 0.95);
-    CalculateNetto(value * 0.95);
-  };
-  const Minus1 = () => {
-    setValue(value * 0.99);
-    CalculateNetto(value * 0.99);
-  };
-  const Plus1 = () => {
-    setValue(value * 1.01);
-    CalculateNetto(value * 1.01);
-  };
-  const Plus5 = () => {
-    setValue(value * 1.05);
-    CalculateNetto(value * 1.05);
+  const changeBrutto = (multiplier) => {
+    const newValue = value * multiplier;
+    setValue(newValue);
+    CalculateNetto(newValue);
   };
 
   return (
@@ -112,16 +101,16 @@ function Input() {
         max={2000000}
         value={typeof value === "number" ? value : 0}
       />
-      <Button variant="standard" onClick={Minus5}>
+      <Button variant="standard" onClick={() => changeBrutto(0.95)}>
         -5%
       </Button>
-      <Button variant="standard" onClick={Minus1}>
+      <Button variant="standard" onClick={() => changeBrutto(0.99)}>
         -1%
       </Button>
-      <Button variant="standard" onClick={Plus1}>
+      <Button variant="standard" onClick={() => changeBrutto(1.01)}>
         +1%
       </Button>
-      <Button variant="standard" onClick={Plus5}>
+      <Button variant="standard" onClick={() => changeBrutto(1.05)}>
         +5%
       </Button>
     </>
