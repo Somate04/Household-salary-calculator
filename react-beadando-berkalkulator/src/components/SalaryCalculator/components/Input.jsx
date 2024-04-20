@@ -1,6 +1,5 @@
-import { TextField, Slider, Button } from "@mui/material";
+import { Slider, Button } from "@mui/material";
 import { useContext, useEffect, useRef, useState } from "react";
-import PropTypes from "prop-types";
 import { useMyContext } from "../../../Context";
 import TextInput from "./TextInput";
 
