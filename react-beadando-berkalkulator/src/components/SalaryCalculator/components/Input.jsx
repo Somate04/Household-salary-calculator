@@ -91,43 +91,40 @@ function Input() {
 
   return (
     <>
-      <form>
-        <TextInput
-          refValue={familyNameRef}
-          type={"text"}
-          label={"Családtag neve"}
-          value={null}
-        />
-        <p>Add meg a családtag nevét!</p>
-        <br />
-        <TextInput
-          refValue={bruttoRef}
-          type={"number"}
-          value={value}
-          onChange={HandleChange}
-        />
-        <br />
-        <p>Add meg a bruttó béredet!</p>
-        <Slider
-          size="small"
-          step={1000}
-          onChange={HandleSlider}
-          max={2000000}
-          value={typeof value === "number" ? value : 0}
-        />
-        <Button variant="standard" onClick={Minus5}>
-          -5%
-        </Button>
-        <Button variant="standard" onClick={Minus1}>
-          -1%
-        </Button>
-        <Button variant="standard" onClick={Plus1}>
-          +1%
-        </Button>
-        <Button variant="standard" onClick={Plus5}>
-          +5%
-        </Button>
-      </form>
+      <TextInput
+        refValue={familyNameRef}
+        type={"text"}
+        label={"Családtag neve"}
+      />
+      <p>Add meg a családtag nevét!</p>
+      <br />
+      <TextInput
+        refValue={bruttoRef}
+        type={"number"}
+        value={value}
+        onChange={HandleChange}
+      />
+      <br />
+      <p>Add meg a bruttó béredet!</p>
+      <Slider
+        size="small"
+        step={1000}
+        onChange={HandleSlider}
+        max={2000000}
+        value={typeof value === "number" ? value : 0}
+      />
+      <Button variant="standard" onClick={Minus5}>
+        -5%
+      </Button>
+      <Button variant="standard" onClick={Minus1}>
+        -1%
+      </Button>
+      <Button variant="standard" onClick={Plus1}>
+        +1%
+      </Button>
+      <Button variant="standard" onClick={Plus5}>
+        +5%
+      </Button>
     </>
   );
 }

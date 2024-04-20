@@ -14,17 +14,18 @@ function TextInput({ refValue, type, label, value, onChange }) {
         InputProps={{
           endAdornment: <InputAdornment position="end">Ft</InputAdornment>,
         }}
+        autoFocus
       />
     );
   } else {
-    <TextField
-      variant="standard"
-      inputRef={refValue}
-      type={type}
-      label={label}
-      value={value === null ? 0 : value}
-      onChange={onChange}
-    />;
+    return (
+      <TextField
+        variant="standard"
+        inputRef={refValue}
+        type={type}
+        label={label}
+      />
+    );
   }
 }
 
