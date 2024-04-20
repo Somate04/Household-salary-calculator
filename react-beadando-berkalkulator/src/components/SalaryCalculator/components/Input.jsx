@@ -4,8 +4,13 @@ import { useMyContext } from "../../../Context";
 import TextInput from "./TextInput";
 
 function Input() {
-  const { calculate, szja25Discount, personalDiscount, newlyWedDiscount } =
-    useMyContext();
+  const {
+    calculate,
+    szja25Discount,
+    personalDiscount,
+    newlyWedDiscount,
+    checkedNewlyWed,
+  } = useMyContext();
 
   const familyNameRef = useRef(null);
   const bruttoRef = useRef(null);
@@ -26,7 +31,8 @@ function Input() {
 
   useEffect(() => {
     CalculateNetto(bruttoRef.current.value);
-  }, [szja25Discount, personalDiscount, newlyWedDiscount]);
+    console.log(newlyWedDiscount);
+  }, [szja25Discount, personalDiscount, newlyWedDiscount, checkedNewlyWed]);
 
   const CalculateNetto = (newValue) => {
     const brutto = newValue;
@@ -59,7 +65,7 @@ function Input() {
       }
       nettoValue = brutto - taxSum;
     }
-    if (newlyWedDiscount) {
+    if (newlyWedDiscount && checkedNewlyWed) {
       nettoValue += 5000;
     }
     netto = Intl.NumberFormat("hu-HU", {

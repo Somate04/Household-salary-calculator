@@ -1,17 +1,16 @@
 import { Button } from "@mui/material";
 import { useMyContext } from "../../../Context";
-import { DateField } from "@mui/x-date-pickers/DateField";
 import { useState } from "react";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 function DateInput() {
   const { closeModal, isNewlyWed, newlyWedDiscount } = useMyContext();
   const [value, setValue] = useState(null);
 
   const changeHandler = (e, newValue) => {
-    const now = Dayjs();
-    if (now.diff(value, "month") <= 24) {
+    const now = new Date();
+    const month = now.getMonth() + 1;
+    const diff = month - newValue.getMonth();
+    if (diff <= 24) {
       setValue(newValue);
       isNewlyWed(true);
     } else {
@@ -21,14 +20,12 @@ function DateInput() {
 
   return (
     <>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DateField
-          label="Házasságkötés dátuma"
-          value={value}
-          onChange={changeHandler}
-          disableFuture
-        />
-      </LocalizationProvider>
+      <input
+        type="date"
+        label="Házasságkötés dátuma"
+        value={value}
+        onChange={changeHandler}
+      />
       <Button onClick={closeModal}>Megerősít</Button>
     </>
   );

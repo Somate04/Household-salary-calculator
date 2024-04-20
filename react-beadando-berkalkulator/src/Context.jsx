@@ -13,6 +13,9 @@ function useService() {
   const [newlyWedDiscount, setNewlyWedDiscount] = useState(false);
   const isNewlyWed = (b) => setNewlyWedDiscount(b);
 
+  const [checkedNewlyWed, setCheckedNewlyWed] = useState(false);
+  const isCheckedNewlyWed = (b) => setCheckedNewlyWed(b);
+
   const [modalIsOpen, setIsOpen] = useState(false);
   const setModal = (b) => setIsOpen(b);
 
@@ -32,6 +35,8 @@ function useService() {
     modalIsOpen,
     closeModal,
     setModal,
+    checkedNewlyWed,
+    isCheckedNewlyWed,
   };
 
   return Service;

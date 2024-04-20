@@ -14,10 +14,11 @@ function Discounts() {
     modalIsOpen,
     setModal,
     closeModal,
+    checkedNewlyWed,
+    isCheckedNewlyWed,
   } = useMyContext();
   const [checked25, setChecked25] = useState(false);
   const [checkedPersonal, setCheckedPersonal] = useState(false);
-  const [checkedNewlyWed, setCheckedNewlyWed] = useState(false);
 
   const HandleChange25 = (e, newValue) => {
     setChecked25(newValue);
@@ -29,7 +30,7 @@ function Discounts() {
     isPersonal(newValue);
   };
   const HandleChangeNewlyWed = (e, newValue) => {
-    setCheckedNewlyWed(newValue);
+    isCheckedNewlyWed(newValue);
   };
 
   const openModal = () => {
