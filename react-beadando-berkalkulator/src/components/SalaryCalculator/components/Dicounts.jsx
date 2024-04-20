@@ -1,8 +1,10 @@
 import { Switch, FormControlLabel, FormGroup, Button } from "@mui/material";
 import { useState } from "react";
 import DateInput from "./DateInput";
+import { useAuth } from "../../../authContext";
 
-function Discounts({ isSzja25, isPersonal, isNewlyWed }) {
+function Discounts() {
+  const { isSzja25, isPersonal, isNewlyWed } = useAuth();
   const [checked25, setChecked25] = useState(false);
   const [checkedPersonal, setCheckedPersonal] = useState(false);
   const [checkedNewlyWed, setCheckedNewlyWed] = useState(false);

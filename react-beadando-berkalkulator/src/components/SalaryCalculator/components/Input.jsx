@@ -2,13 +2,12 @@ import { TextField, Slider, Button } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import InputAdornment from "@mui/material/InputAdornment";
 import PropTypes from "prop-types";
+import { useAuth } from "../../../authContext";
 
-function Input({
-  calculate,
-  szja25Discount,
-  personalDiscount,
-  newlyWedDiscount,
-}) {
+function Input() {
+  const { calculate, szja25Discount, personalDiscount, newlyWedDiscount } =
+    useAuth();
+
   const familyNameRef = useRef(null);
   const bruttoRef = useRef(null);
 
