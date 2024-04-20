@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-function useAuthService() {
+function useService() {
   const [netto, setNetto] = useState(null);
   const calculate = (netto) => setNetto(netto);
 
@@ -13,7 +13,7 @@ function useAuthService() {
   const [newlyWedDiscount, setNewlyWedDiscount] = useState(false);
   const isNewlyWed = (b) => setNewlyWedDiscount(b);
 
-  const authService = {
+  const Service = {
     netto,
     calculate,
     isSzja25,
@@ -24,21 +24,19 @@ function useAuthService() {
     newlyWedDiscount,
   };
 
-  return authService;
+  return Service;
 }
 
-const AuthContext = createContext();
+const Context = createContext();
 
-export const AuthProvider = ({ children }) => {
-  const authService = useAuthService();
+export const ContextProvider = ({ children }) => {
+  const Service = useService();
 
-  return (
-    <AuthContext.Provider value={authService}>{children}</AuthContext.Provider>
-  );
+  return <Context.Provider value={Service}>{children}</Context.Provider>;
 };
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
+export const useMyContext = () => {
+  const context = useContext(Context);
   if (!context) {
     throw new Error("No auth context");
   }

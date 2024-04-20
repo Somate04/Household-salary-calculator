@@ -1,8 +1,9 @@
+import { useContext } from "react";
 import HouseholdSalaryCalculator from "./components/HouseholdSalaryCalculator";
-import { useAuth } from "./authContext";
+import { useMyContext } from "./Context";
 
 function App() {
-  const { netto } = useAuth();
+  const { netto } = useMyContext();
 
   return (
     <div>

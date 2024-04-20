@@ -1,12 +1,12 @@
 import { TextField, Slider, Button } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
-import InputAdornment from "@mui/material/InputAdornment";
+import { useContext, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
-import { useAuth } from "../../../authContext";
+import { useMyContext } from "../../../Context";
+import TextInput from "./TextInput";
 
 function Input() {
   const { calculate, szja25Discount, personalDiscount, newlyWedDiscount } =
-    useAuth();
+    useMyContext();
 
   const familyNameRef = useRef(null);
   const bruttoRef = useRef(null);
@@ -92,28 +92,19 @@ function Input() {
   return (
     <>
       <form>
-        <TextField
-          variant="standard"
-          inputRef={familyNameRef}
-          type="text"
-          id="name"
-          name="name"
-          label="Családtag neve"
+        <TextInput
+          refValue={familyNameRef}
+          type={"text"}
+          label={"Családtag neve"}
+          value={null}
         />
         <p>Add meg a családtag nevét!</p>
         <br />
-        <TextField
-          variant="standard"
-          inputRef={bruttoRef}
+        <TextInput
+          refValue={bruttoRef}
+          type={"number"}
           value={value}
-          type="number"
-          id="brutto"
-          name="brutto"
           onChange={HandleChange}
-          InputProps={{
-            endAdornment: <InputAdornment position="end">Ft</InputAdornment>,
-          }}
-          autoFocus
         />
         <br />
         <p>Add meg a bruttó béredet!</p>
