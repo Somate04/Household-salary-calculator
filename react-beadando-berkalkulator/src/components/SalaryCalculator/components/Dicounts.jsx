@@ -2,9 +2,19 @@ import { Switch, FormControlLabel, FormGroup, Button } from "@mui/material";
 import { useState } from "react";
 import DateInput from "./DateInput";
 import { useMyContext } from "../../../Context";
+import Modal from "react-modal";
+
+Modal.setAppElement(root);
 
 function Discounts() {
-  const { isSzja25, isPersonal, isNewlyWed } = useMyContext();
+  const {
+    isSzja25,
+    isPersonal,
+    isNewlyWed,
+    modalIsOpen,
+    setModal,
+    closeModal,
+  } = useMyContext();
   const [checked25, setChecked25] = useState(false);
   const [checkedPersonal, setCheckedPersonal] = useState(false);
   const [checkedNewlyWed, setCheckedNewlyWed] = useState(false);
@@ -20,14 +30,11 @@ function Discounts() {
   };
   const HandleChangeNewlyWed = (e, newValue) => {
     setCheckedNewlyWed(newValue);
-    isNewlyWed(newValue);
   };
 
-  /*const [inputs, setInputs] = useState([]);
-  const test = () => {
-    const newDateInput = Date.now();
-    setInputs((v) => [...v, newDateInput]);
-  };*/
+  const openModal = () => {
+    setModal(true);
+  };
 
   return (
     <>
@@ -48,11 +55,15 @@ function Discounts() {
           label="Friss házasok kedvezménye"
           id="szemelyi"
         />
-        <Button>Dátum hozzáadása</Button>
-
-        {/*inputs.map(() => (
+        <Button
+          onClick={openModal}
+          style={{ display: checkedNewlyWed ? "block" : "none" }}
+        >
+          Dátum hozzáadása
+        </Button>
+        <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
           <DateInput />
-        ))*/}
+        </Modal>
       </FormGroup>
     </>
   );

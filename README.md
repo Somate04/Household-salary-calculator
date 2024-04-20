@@ -19,7 +19,7 @@ Tehát léteznek a következő komponensek:
 - Friss házasokra megadására vonatkozó komponens.
 - Jogosultság/Nem jogosultság megjelenítésére vonatkozó komponens
 
-- [ ] Az alkalmazásban a komponenseket logikusan, funkciók szerint szétbontva hozta létre, ügyelve a tárgyon elsajátított alapelvekre. (2pt)
+- [x] Az alkalmazásban a komponenseket logikusan, funkciók szerint szétbontva hozta létre, ügyelve a tárgyon elsajátított alapelvekre. (2pt)
 
 - Bérkalkulátor
 

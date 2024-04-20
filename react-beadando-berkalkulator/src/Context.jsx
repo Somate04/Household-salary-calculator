@@ -13,6 +13,13 @@ function useService() {
   const [newlyWedDiscount, setNewlyWedDiscount] = useState(false);
   const isNewlyWed = (b) => setNewlyWedDiscount(b);
 
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const setModal = (b) => setIsOpen(b);
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   const Service = {
     netto,
     calculate,
@@ -22,6 +29,9 @@ function useService() {
     personalDiscount,
     isNewlyWed,
     newlyWedDiscount,
+    modalIsOpen,
+    closeModal,
+    setModal,
   };
 
   return Service;
