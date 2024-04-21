@@ -34,8 +34,15 @@ function Input() {
 
   useEffect(() => {
     CalculateNetto(bruttoRef.current.value);
-    console.log(newlyWedDiscount);
-  }, [szja25Discount, personalDiscount, newlyWedDiscount, checkedNewlyWed]);
+  }, [
+    szja25Discount,
+    personalDiscount,
+    newlyWedDiscount,
+    checkedNewlyWed,
+    checkedFamily,
+    familyValue1,
+    familyValue2,
+  ]);
 
   const CalculateNetto = (newValue) => {
     const brutto = newValue;
@@ -44,20 +51,22 @@ function Input() {
     let szjaTax = brutto * 0.15;
     let tb = brutto * 0.185;
     let taxSum = szjaTax + tb;
+    let familyTaxDiscount;
+    let newlyWed = 0;
     if (szja25Discount) {
       let diff = brutto - 499952;
       if (diff > 0) {
         szjaTax = diff * 0.15;
         tb = brutto * 0.185;
         taxSum = szjaTax + tb;
-        nettoValue = brutto - taxSum;
+        //nettoValue = brutto - taxSum;
       } else {
         szjaTax = 0;
         taxSum = tb;
-        nettoValue = brutto - taxSum;
+        //nettoValue = brutto - taxSum + newlyWed;
       }
     } else {
-      nettoValue = brutto - szjaTax - tb;
+      //nettoValue = brutto - szjaTax - tb + newlyWed;
     }
     if (personalDiscount) {
       taxSum = szjaTax + tb;
@@ -66,11 +75,29 @@ function Input() {
       } else {
         taxSum = 0;
       }
-      nettoValue = brutto - taxSum;
+      //nettoValue = brutto - taxSum + newlyWed;
     }
     if (newlyWedDiscount && checkedNewlyWed) {
-      nettoValue += 5000;
+      newlyWed = 5000;
+      nettoValue += newlyWed;
     }
+    if (checkedFamily) {
+      if (familyValue2 === 0) {
+        familyTaxDiscount = 0;
+      } else if (familyValue2 === 1) {
+        familyTaxDiscount = 10000 * familyValue1;
+      } else if (familyValue2 === 2) {
+        familyTaxDiscount = 20000 * familyValue1;
+      } else if (familyValue2 === 3) {
+        familyTaxDiscount = 33000 * familyValue1;
+      }
+      if (taxSum - familyTaxDiscount > 0) {
+        taxSum -= familyTaxDiscount;
+      } else {
+        taxSum = 0;
+      }
+    }
+    nettoValue = brutto - taxSum + newlyWed;
     netto = Intl.NumberFormat("hu-HU", {
       style: "currency",
       currency: "HUF",
