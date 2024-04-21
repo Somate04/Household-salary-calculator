@@ -3,6 +3,7 @@ import { useState } from "react";
 import DateInput from "./DateInput";
 import { useMyContext } from "../../../Context";
 import Modal from "react-modal";
+import Entitled from "./Entitled";
 
 Modal.setAppElement(root);
 
@@ -56,6 +57,7 @@ function Discounts() {
           label="Friss házasok kedvezménye"
           id="szemelyi"
         />
+        <Entitled />
         <Button
           onClick={openModal}
           style={{ display: checkedNewlyWed ? "block" : "none" }}

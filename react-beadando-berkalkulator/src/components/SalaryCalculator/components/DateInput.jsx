@@ -22,12 +22,17 @@ function DateInput() {
 
   return (
     <>
-      <p>Házasságkötés dátuma</p>
+      <p>
+        A kedvezmény először a házasságkötés követő hónapra vehető igénybe és a
+        házassági életközösség allat legfeljebb 24 hónapon keresztül jár.
+      </p>
+      <h3>Add meg a házasságkötés dátumát:</h3>
       <TextField
         variant="standard"
         type="date"
         inputRef={dateRef}
         onChange={changeHandler}
+        helperText="Például: 2000/10/25"
       />
       <Button onClick={closeModal}>Megerősít</Button>
     </>
