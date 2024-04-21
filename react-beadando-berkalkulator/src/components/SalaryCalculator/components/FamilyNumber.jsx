@@ -4,35 +4,39 @@ import { useEffect, useState } from "react";
 import styles from "./FamilyNumber.module.css";
 
 function FamilyNumber() {
-  const { checkedFamily } = useMyContext();
-  const [value1, setValue1] = useState(0);
-  const [value2, setValue2] = useState(0);
+  const {
+    checkedFamily,
+    familyValue1,
+    familyValue2,
+    setFamilyValue1,
+    setFamilyValue2,
+  } = useMyContext();
 
   const changeValue1 = (increment) => {
-    const newValue = value1 + increment;
+    const newValue = familyValue1 + increment;
     if (newValue >= 0) {
-      setValue1(newValue);
+      setFamilyValue1(newValue);
     }
   };
   const changeValue2 = (increment) => {
-    const newValue = value2 + increment;
-    if (newValue >= 0 && newValue <= value1 && newValue <= 3) {
-      setValue2(newValue);
+    const newValue = familyValue2 + increment;
+    if (newValue >= 0 && newValue <= familyValue1 && newValue <= 3) {
+      setFamilyValue2(newValue);
     }
   };
 
   useEffect(() => {
-    if (value1 < value2) {
-      setValue2(value1);
+    if (familyValue1 < familyValue2) {
+      setFamilyValue2(familyValue1);
     }
-  }, [value1]);
+  }, [familyValue1]);
 
   return (
     <form style={{ display: checkedFamily ? "block" : "none" }}>
       <Button className={styles.input} onClick={() => changeValue1(1)}>
         +
       </Button>
-      <p className={styles.input}>{value1}</p>
+      <p className={styles.input}>{familyValue1}</p>
       <Button className={styles.input} onClick={() => changeValue1(-1)}>
         -
       </Button>
@@ -40,7 +44,7 @@ function FamilyNumber() {
       <Button className={styles.input} onClick={() => changeValue2(1)}>
         +
       </Button>
-      <p className={styles.input}>{value2}</p>
+      <p className={styles.input}>{familyValue2}</p>
       <Button className={styles.input} onClick={() => changeValue2(-1)}>
         -
       </Button>

@@ -10,6 +10,9 @@ function Input() {
     personalDiscount,
     newlyWedDiscount,
     checkedNewlyWed,
+    checkedFamily,
+    familyValue1,
+    familyValue2,
   } = useMyContext();
 
   const familyNameRef = useRef(null);

@@ -22,6 +22,11 @@ function useService() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const setModal = (b) => setIsOpen(b);
 
+  const [familyValue1, setValue1] = useState(0);
+  const setFamilyValue1 = (b) => setValue1(b);
+  const [familyValue2, setValue2] = useState(0);
+  const setFamilyValue2 = (b) => setValue2(b);
+
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -42,6 +47,10 @@ function useService() {
     isCheckedNewlyWed,
     checkedFamily,
     isCheckedFamily,
+    familyValue1,
+    familyValue2,
+    setFamilyValue1,
+    setFamilyValue2,
   };
 
   return Service;
