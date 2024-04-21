@@ -1,17 +1,19 @@
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { useMyContext } from "../../../Context";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 function DateInput() {
   const { closeModal, isNewlyWed, newlyWedDiscount } = useMyContext();
-  const [value, setValue] = useState(null);
+  const dateRef = useRef(null);
 
-  const changeHandler = (e, newValue) => {
-    const now = new Date();
-    const month = now.getMonth() + 1;
-    const diff = month - newValue.getMonth();
+  const changeHandler = () => {
+    const startDate = new Date(dateRef.current.value);
+    const endDate = new Date(Date.now());
+    const diff =
+      (endDate.getFullYear() - startDate.getFullYear()) * 12 -
+      startDate.getMonth() +
+      endDate.getMonth();
     if (diff <= 24) {
-      setValue(newValue);
       isNewlyWed(true);
     } else {
       isNewlyWed(false);
@@ -20,10 +22,11 @@ function DateInput() {
 
   return (
     <>
-      <input
+      <p>Házasságkötés dátuma</p>
+      <TextField
+        variant="standard"
         type="date"
-        label="Házasságkötés dátuma"
-        value={value}
+        inputRef={dateRef}
         onChange={changeHandler}
       />
       <Button onClick={closeModal}>Megerősít</Button>
