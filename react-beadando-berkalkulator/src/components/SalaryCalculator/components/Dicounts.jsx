@@ -4,6 +4,7 @@ import DateInput from "./DateInput";
 import { useMyContext } from "../../../Context";
 import Modal from "react-modal";
 import Entitled from "./Entitled";
+import FamilyNumber from "./FamilyNumber";
 
 Modal.setAppElement(root);
 
@@ -17,6 +18,7 @@ function Discounts() {
     closeModal,
     checkedNewlyWed,
     isCheckedNewlyWed,
+    isCheckedFamily,
   } = useMyContext();
   const [checked25, setChecked25] = useState(false);
   const [checkedPersonal, setCheckedPersonal] = useState(false);
@@ -32,6 +34,9 @@ function Discounts() {
   };
   const HandleChangeNewlyWed = (e, newValue) => {
     isCheckedNewlyWed(newValue);
+  };
+  const HandleChangeFamily = (e, newValue) => {
+    isCheckedFamily(newValue);
   };
 
   const openModal = () => {
@@ -50,12 +55,10 @@ function Discounts() {
         <FormControlLabel
           control={<Switch onChange={HandleChangePersonal} />}
           label="Személyi adókedvezmény"
-          id="szemelyi"
         />
         <FormControlLabel
           control={<Switch onChange={HandleChangeNewlyWed} />}
           label="Friss házasok kedvezménye"
-          id="szemelyi"
         />
         <Entitled />
         <Button
@@ -67,6 +70,11 @@ function Discounts() {
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
           <DateInput />
         </Modal>
+        <FormControlLabel
+          control={<Switch onChange={HandleChangeFamily} />}
+          label="Családi kedvezmény"
+        />
+        <FamilyNumber />
       </FormGroup>
     </>
   );
