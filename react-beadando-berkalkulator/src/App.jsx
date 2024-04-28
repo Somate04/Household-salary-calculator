@@ -9,7 +9,11 @@ function App() {
     <div>
       <h1>Bérkalkulátor alkalmazás</h1>
       <HouseholdSalaryCalculator />
-      {netto}
+      {Intl.NumberFormat("hu-HU", {
+        style: "currency",
+        currency: "HUF",
+        maximumSignificantDigits: 6,
+      }).format(netto)}
     </div>
   );
 }

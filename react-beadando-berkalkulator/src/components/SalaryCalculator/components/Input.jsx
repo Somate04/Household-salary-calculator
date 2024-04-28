@@ -105,11 +105,12 @@ function Input() {
       }
     }
     nettoValue = brutto - taxSum + newlyWed;
-    netto = Intl.NumberFormat("hu-HU", {
+    netto = nettoValue;
+    /*netto = Intl.NumberFormat("hu-HU", {
       style: "currency",
       currency: "HUF",
       maximumSignificantDigits: 6,
-    }).format(nettoValue);
+    }).format(nettoValue);*/
 
     calculate(netto);
   };
