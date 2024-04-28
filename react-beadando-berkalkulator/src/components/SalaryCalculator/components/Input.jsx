@@ -1,11 +1,12 @@
 import { Slider, Button } from "@mui/material";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMyContext } from "../../../Context";
 import TextInput from "./TextInput";
 
 function Input() {
   const {
     calculate,
+    netto,
     szja25Discount,
     personalDiscount,
     newlyWedDiscount,
@@ -19,11 +20,10 @@ function Input() {
   const bruttoRef = useRef(null);
 
   const [value, setValue] = useState(0);
+  const [members, setMembers] = useState([]);
 
   const HandleChange = (e) => {
     setValue(Number(e.target.value));
-
-    //const name = familyNameRef.current.value;
     CalculateNetto(Number(e.target.value));
   };
 
@@ -34,6 +34,35 @@ function Input() {
 
   useEffect(() => {
     CalculateNetto(bruttoRef.current.value);
+    const index = members.findIndex(
+      (member) => member.name === familyNameRef.current.value
+    );
+    console.log(index);
+    if (index !== -1) {
+      setMembers((prevMembers) => {
+        const newMembers = [...prevMembers];
+        newMembers[index] = {
+          ...newMembers[index],
+          ...{
+            name: familyNameRef.current.value,
+            bruttor: bruttoRef.current.value,
+            netto: netto,
+          },
+        };
+        return newMembers;
+      });
+    } else {
+      setMembers((prevMembers) => [
+        ...prevMembers,
+        {
+          name: familyNameRef.current.value,
+          ...{
+            brutto: bruttoRef.current.value,
+            netto: netto,
+          },
+        },
+      ]);
+    }
   }, [
     szja25Discount,
     personalDiscount,
@@ -43,6 +72,9 @@ function Input() {
     familyValue1,
     familyValue2,
   ]);
+  useEffect(() => {
+    console.log(members);
+  }, [members]);
 
   const CalculateNetto = (newValue) => {
     const brutto = newValue;
