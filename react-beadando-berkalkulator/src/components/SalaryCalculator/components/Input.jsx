@@ -14,13 +14,14 @@ function Input() {
     checkedFamily,
     familyValue1,
     familyValue2,
+    members,
+    saveFamilyMembers,
   } = useMyContext();
 
   const familyNameRef = useRef(null);
   const bruttoRef = useRef(null);
 
   const [value, setValue] = useState(0);
-  const [members, setMembers] = useState([]);
 
   const HandleChange = (e) => {
     setValue(Number(e.target.value));
@@ -39,26 +40,36 @@ function Input() {
     );
     console.log(index);
     if (index !== -1) {
-      setMembers((prevMembers) => {
+      saveFamilyMembers((prevMembers) => {
         const newMembers = [...prevMembers];
         newMembers[index] = {
           ...newMembers[index],
           ...{
             name: familyNameRef.current.value,
-            bruttor: bruttoRef.current.value,
+            brutto: bruttoRef.current.value,
             netto: netto,
+            szja: szja25Discount,
+            personalDiscount: personalDiscount,
+            newlyWed: newlyWedDiscount,
+            familyValue1: familyValue1,
+            familyValue2: familyValue2,
           },
         };
         return newMembers;
       });
     } else {
-      setMembers((prevMembers) => [
+      saveFamilyMembers((prevMembers) => [
         ...prevMembers,
         {
           name: familyNameRef.current.value,
           ...{
             brutto: bruttoRef.current.value,
             netto: netto,
+            szja: szja25Discount,
+            personalDiscount: personalDiscount,
+            newlyWed: newlyWedDiscount,
+            familyValue1: familyValue1,
+            familyValue2: familyValue2,
           },
         },
       ]);
@@ -71,7 +82,10 @@ function Input() {
     checkedFamily,
     familyValue1,
     familyValue2,
+    netto,
   ]);
+
+  //mentés ellenőrzése
   useEffect(() => {
     console.log(members);
   }, [members]);

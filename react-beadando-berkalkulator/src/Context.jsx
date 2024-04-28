@@ -27,6 +27,9 @@ function useService() {
   const [familyValue2, setValue2] = useState(0);
   const setFamilyValue2 = (b) => setValue2(b);
 
+  const [members, setMembers] = useState([]);
+  const saveFamilyMembers = (array) => setMembers(array);
+
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -51,6 +54,8 @@ function useService() {
     familyValue2,
     setFamilyValue1,
     setFamilyValue2,
+    members,
+    saveFamilyMembers,
   };
 
   return Service;
