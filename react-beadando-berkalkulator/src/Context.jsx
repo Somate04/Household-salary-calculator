@@ -4,6 +4,9 @@ function useService() {
   const [netto, setNetto] = useState(null);
   const calculate = (netto) => setNetto(netto);
 
+  const [name, setName] = useState(null);
+  const saveName = (name) => setNetto(name);
+
   const [szja25Discount, setSzja25Discount] = useState(false);
   const isSzja25 = (b) => setSzja25Discount(b);
 
@@ -36,6 +39,8 @@ function useService() {
 
   const Service = {
     netto,
+    name,
+    saveName,
     calculate,
     isSzja25,
     szja25Discount,

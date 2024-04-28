@@ -1,5 +1,5 @@
-const FamilyMemberTabs = () => {
-  return <div>FamilyMemberTabs</div>;
-};
+import { useMyContext } from "../../Context";
+
+const FamilyMemberTabs = () => {};
 
 export default FamilyMemberTabs;

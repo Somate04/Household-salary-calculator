@@ -16,12 +16,13 @@ function Input() {
     familyValue2,
     members,
     saveFamilyMembers,
+    saveName,
   } = useMyContext();
 
-  const familyNameRef = useRef(null);
   const bruttoRef = useRef(null);
 
   const [value, setValue] = useState(0);
+  const [name, setName] = useState(null);
 
   const HandleChange = (e) => {
     setValue(Number(e.target.value));
@@ -35,44 +36,43 @@ function Input() {
 
   useEffect(() => {
     CalculateNetto(bruttoRef.current.value);
-    const index = members.findIndex(
-      (member) => member.name === familyNameRef.current.value
-    );
-    console.log(index);
-    if (index !== -1) {
-      saveFamilyMembers((prevMembers) => {
-        const newMembers = [...prevMembers];
-        newMembers[index] = {
-          ...newMembers[index],
-          ...{
-            name: familyNameRef.current.value,
-            brutto: bruttoRef.current.value,
-            netto: netto,
-            szja: szja25Discount,
-            personalDiscount: personalDiscount,
-            newlyWed: newlyWedDiscount,
-            familyValue1: familyValue1,
-            familyValue2: familyValue2,
+    if (name !== null) {
+      const index = members.findIndex((member) => member.name === name);
+      if (index !== -1) {
+        saveFamilyMembers((prevMembers) => {
+          const newMembers = [...prevMembers];
+          newMembers[index] = {
+            ...newMembers[index],
+            ...{
+              name: name,
+              brutto: bruttoRef.current.value,
+              netto: netto,
+              szja: szja25Discount,
+              personalDiscount: personalDiscount,
+              newlyWed: newlyWedDiscount,
+              familyValue1: familyValue1,
+              familyValue2: familyValue2,
+            },
+          };
+          return newMembers;
+        });
+      } else {
+        saveFamilyMembers((prevMembers) => [
+          ...prevMembers,
+          {
+            name: name,
+            ...{
+              brutto: bruttoRef.current.value,
+              netto: netto,
+              szja: szja25Discount,
+              personalDiscount: personalDiscount,
+              newlyWed: newlyWedDiscount,
+              familyValue1: familyValue1,
+              familyValue2: familyValue2,
+            },
           },
-        };
-        return newMembers;
-      });
-    } else {
-      saveFamilyMembers((prevMembers) => [
-        ...prevMembers,
-        {
-          name: familyNameRef.current.value,
-          ...{
-            brutto: bruttoRef.current.value,
-            netto: netto,
-            szja: szja25Discount,
-            personalDiscount: personalDiscount,
-            newlyWed: newlyWedDiscount,
-            familyValue1: familyValue1,
-            familyValue2: familyValue2,
-          },
-        },
-      ]);
+        ]);
+      }
     }
   }, [
     szja25Discount,
@@ -83,6 +83,7 @@ function Input() {
     familyValue1,
     familyValue2,
     netto,
+    name,
   ]);
 
   //mentés ellenőrzése
@@ -158,14 +159,13 @@ function Input() {
     setValue(newValue);
     CalculateNetto(newValue);
   };
+  const nameChange = (e) => {
+    setName(e.target.value);
+  };
 
   return (
     <>
-      <TextInput
-        refValue={familyNameRef}
-        type={"text"}
-        label={"Családtag neve"}
-      />
+      <TextInput type={"text"} label={"Családtag neve"} onChange={nameChange} />
       <p>Add meg a családtag nevét!</p>
       <br />
       <TextInput
