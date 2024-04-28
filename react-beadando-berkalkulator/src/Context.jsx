@@ -5,7 +5,7 @@ function useService() {
   const calculate = (netto) => setNetto(netto);
 
   const [name, setName] = useState(null);
-  const saveName = (name) => setNetto(name);
+  const saveName = (name) => setName(name);
 
   const [szja25Discount, setSzja25Discount] = useState(false);
   const isSzja25 = (b) => setSzja25Discount(b);
@@ -31,10 +31,52 @@ function useService() {
   const setFamilyValue2 = (b) => setValue2(b);
 
   const [members, setMembers] = useState([]);
-  const saveFamilyMembers = (array) => setMembers(array);
 
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  const addFamilyMember = () => {
+    console.log(name);
+    if (name !== null) {
+      const index = members.findIndex((member) => member.name === name);
+      if (index !== -1) {
+        setMembers((prevMembers) => {
+          const newMembers = [...prevMembers];
+          newMembers[index] = {
+            ...newMembers[index],
+            ...{
+              name: name,
+              //brutto: bruttoRef.current.value,
+              netto: netto,
+              szja: szja25Discount,
+              personalDiscount: personalDiscount,
+              newlyWed: newlyWedDiscount,
+              familyValue1: familyValue1,
+              familyValue2: familyValue2,
+            },
+          };
+          return newMembers;
+        });
+      } else {
+        setMembers((prevMembers) => [
+          ...prevMembers,
+          {
+            name: name,
+            ...{
+              //brutto: bruttoRef.current.value,
+              netto: netto,
+              szja: szja25Discount,
+              personalDiscount: personalDiscount,
+              newlyWed: newlyWedDiscount,
+              familyValue1: familyValue1,
+              familyValue2: familyValue2,
+            },
+          },
+        ]);
+      }
+    }
+    console.log(members);
   };
 
   const Service = {
@@ -60,7 +102,7 @@ function useService() {
     setFamilyValue1,
     setFamilyValue2,
     members,
-    saveFamilyMembers,
+    addFamilyMember,
   };
 
   return Service;

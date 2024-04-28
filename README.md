@@ -35,7 +35,7 @@ Tehát léteznek a következő komponensek:
 - Háztartás jövedelme
 
 - [x] Személyek mentése: Az elkészített bérkalkuláció automatikusan elmentődik az alkalmazás állapotterében a megfelelő névvel, és a hozzá tartozó értékekkel. (2 pont)
-- [ ] Személyek mentése: Az elmentett személyek táblázatban megjelennek a nettó jövedelmükkel. (2pt)
+- [x] Személyek mentése: Az elmentett személyek táblázatban megjelennek a nettó jövedelmükkel. (2pt)
 - [ ] Személyek mentése: Az elmentett személyek alapján az alkalmazás kiszámolja a háztartás nettó jövedelmét, és ezt is megjeleníti (1pt)
 - [ ] Személyek módosítása: A személyek listájában egy személyre kattintva megjelenik a nettó és bruttó bére a Bérkalkulátorban, és a nevét tudjuk módosítani. (4pt)
 - [ ] Személyek módosítása: A személyhez tartozó minden adat megjelenik a Bérkalkulátorban, és ezeket módosítva felül tudjuk írni az eredeti személy adatait. (2pt)
