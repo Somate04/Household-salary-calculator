@@ -22,8 +22,8 @@ function TextInput({ refValue, type, label, value, onChange }) {
       <TextField
         variant="standard"
         type={type}
-        label={label}
         onChange={onChange}
+        value={value}
       />
     );
   }

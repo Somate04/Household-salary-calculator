@@ -1,10 +1,13 @@
 import { createContext, useContext, useState } from "react";
 
 function useService() {
+  const [brutto, setBrutto] = useState(0);
+  const saveBrutto = (brutto) => setBrutto(brutto);
+
   const [netto, setNetto] = useState(null);
   const calculate = (netto) => setNetto(netto);
 
-  const [name, setName] = useState(null);
+  const [name, setName] = useState("");
   const saveName = (name) => setName(name);
 
   const [szja25Discount, setSzja25Discount] = useState(false);
@@ -31,6 +34,8 @@ function useService() {
   const setFamilyValue2 = (b) => setValue2(b);
 
   const [members, setMembers] = useState([]);
+  const [selectedMember, setSelectedMember] = useState(null);
+  const SelectMember = (member) => setSelectedMember(member);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -47,7 +52,7 @@ function useService() {
             ...newMembers[index],
             ...{
               name: name,
-              //brutto: bruttoRef.current.value,
+              brutto: brutto,
               netto: netto,
               szja: szja25Discount,
               personalDiscount: personalDiscount,
@@ -64,7 +69,7 @@ function useService() {
           {
             name: name,
             ...{
-              //brutto: bruttoRef.current.value,
+              brutto: brutto,
               netto: netto,
               szja: szja25Discount,
               personalDiscount: personalDiscount,
@@ -103,6 +108,10 @@ function useService() {
     setFamilyValue2,
     members,
     addFamilyMember,
+    selectedMember,
+    SelectMember,
+    saveBrutto,
+    brutto,
   };
 
   return Service;

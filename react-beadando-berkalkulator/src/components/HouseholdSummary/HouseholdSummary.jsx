@@ -10,12 +10,12 @@ const HouseholdSummary = () => {
     <table>
       <tbody>
         {members.map((member) => (
-          <tr>
+          <tr key={member.name}>
             <td>{member.name}</td>
             <td>{member.netto}</td>
           </tr>
         ))}
-        <tr>
+        <tr key="Total">
           <td>Összesen</td>
           <td>
             {Intl.NumberFormat("hu-HU", {

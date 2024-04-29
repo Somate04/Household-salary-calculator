@@ -17,19 +17,19 @@ function Input() {
     members,
     saveName,
     name,
+    saveBrutto,
+    brutto,
   } = useMyContext();
 
   const bruttoRef = useRef(null);
 
-  const [value, setValue] = useState(0);
-
   const HandleChange = (e) => {
-    setValue(Number(e.target.value));
+    saveBrutto(Number(e.target.value));
     CalculateNetto(Number(e.target.value));
   };
 
   const HandleSlider = (e, newValue) => {
-    setValue(newValue);
+    saveBrutto(newValue);
     CalculateNetto(newValue);
   };
 
@@ -44,6 +44,7 @@ function Input() {
     familyValue1,
     familyValue2,
     netto,
+    brutto,
   ]);
 
   //mentés ellenőrzése
@@ -116,8 +117,8 @@ function Input() {
   };
 
   const changeBrutto = (multiplier) => {
-    const newValue = value * multiplier;
-    setValue(newValue);
+    const newValue = brutto * multiplier;
+    saveBrutto(newValue);
     CalculateNetto(newValue);
   };
   const nameChange = (e) => {
@@ -126,13 +127,13 @@ function Input() {
 
   return (
     <>
-      <TextInput type={"text"} label={"Családtag neve"} onChange={nameChange} />
+      <TextInput type={"text"} onChange={nameChange} value={name} />
       <p>Add meg a családtag nevét!</p>
       <br />
       <TextInput
         refValue={bruttoRef}
         type={"number"}
-        value={value}
+        value={brutto}
         onChange={HandleChange}
       />
       <br />
@@ -142,7 +143,7 @@ function Input() {
         step={1000}
         onChange={HandleSlider}
         max={2000000}
-        value={typeof value === "number" ? value : 0}
+        value={typeof brutto === "number" ? brutto : 0}
       />
       <Button variant="standard" onClick={() => changeBrutto(0.95)}>
         -5%
