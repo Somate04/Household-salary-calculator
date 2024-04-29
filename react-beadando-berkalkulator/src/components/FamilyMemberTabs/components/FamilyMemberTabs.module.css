@@ -1,0 +1,14 @@
+.tabs {
+  display: inline;
+  background-color: rgb(226, 232, 240);
+  padding: 10px;
+}
+.tabs:hover {
+  background-color: white;
+}
+
+.selected {
+  display: inline;
+  background-color: white;
+  padding: 10px;
+}

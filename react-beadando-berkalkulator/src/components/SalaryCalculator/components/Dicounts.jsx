@@ -53,7 +53,11 @@ function Discounts() {
       <FormGroup>
         <FormControlLabel
           control={
-            <Switch onChange={HandleChange25} checked={szja25Discount} />
+            <Switch
+              onChange={HandleChange25}
+              checked={szja25Discount}
+              color="info"
+            />
           }
           label="25 éven aluliak SZJA kedvezménye"
           id="szja25"
@@ -63,13 +67,18 @@ function Discounts() {
             <Switch
               onChange={HandleChangePersonal}
               checked={personalDiscount}
+              color="info"
             />
           }
           label="Személyi adókedvezmény"
         />
         <FormControlLabel
           control={
-            <Switch onChange={HandleChangeNewlyWed} checked={checkedNewlyWed} />
+            <Switch
+              onChange={HandleChangeNewlyWed}
+              checked={checkedNewlyWed}
+              color="info"
+            />
           }
           label="Friss házasok kedvezménye"
         />
@@ -85,7 +94,11 @@ function Discounts() {
         </Modal>
         <FormControlLabel
           control={
-            <Switch onChange={HandleChangeFamily} checked={checkedFamily} />
+            <Switch
+              onChange={HandleChangeFamily}
+              checked={checkedFamily}
+              color="info"
+            />
           }
           label="Családi kedvezmény"
         />

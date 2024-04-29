@@ -144,17 +144,38 @@ function Input() {
         onChange={HandleSlider}
         max={2000000}
         value={typeof brutto === "number" ? brutto : 0}
+        color="default"
       />
-      <Button variant="standard" onClick={() => changeBrutto(0.95)}>
+      <Button
+        variant="contained"
+        onClick={() => changeBrutto(0.95)}
+        color="error"
+        sx={{ m: 1 }}
+      >
         -5%
       </Button>
-      <Button variant="standard" onClick={() => changeBrutto(0.99)}>
+      <Button
+        variant="contained"
+        onClick={() => changeBrutto(0.99)}
+        color="error"
+        sx={{ m: 1 }}
+      >
         -1%
       </Button>
-      <Button variant="standard" onClick={() => changeBrutto(1.01)}>
+      <Button
+        variant="contained"
+        onClick={() => changeBrutto(1.01)}
+        color="success"
+        sx={{ m: 1 }}
+      >
         +1%
       </Button>
-      <Button variant="standard" onClick={() => changeBrutto(1.05)}>
+      <Button
+        variant="contained"
+        onClick={() => changeBrutto(1.05)}
+        color="success"
+        sx={{ m: 1 }}
+      >
         +5%
       </Button>
     </>

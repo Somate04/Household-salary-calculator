@@ -1,6 +1,7 @@
 import FamilyMemberTabs from "./FamilyMemberTabs/FamilyMemberTabs";
 import HouseholdSummary from "./HouseholdSummary/HouseholdSummary";
 import SalaryCalculator from "./SalaryCalculator/SalaryCalculator";
+import styles from "./HouseholdSalaryCalculator.module.css";
 
 const HouseholdSalaryCalculator = () => {
   return (
@@ -8,7 +9,7 @@ const HouseholdSalaryCalculator = () => {
       <header>
         <FamilyMemberTabs />
       </header>
-      <main>
+      <main className={styles.twocolumns}>
         <SalaryCalculator />
         <HouseholdSummary />
       </main>

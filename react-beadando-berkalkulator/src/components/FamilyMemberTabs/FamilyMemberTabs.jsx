@@ -1,5 +1,8 @@
 import { useMyContext } from "../../Context";
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
+import styles from "./components/FamilyMemberTabs.module.css";
+import DeleteIcon from "@mui/icons-material/Delete";
+import AddIcon from "@mui/icons-material/Add";
 
 const FamilyMemberTabs = () => {
   const {
@@ -15,6 +18,7 @@ const FamilyMemberTabs = () => {
     setFamilyValue2,
     isCheckedFamily,
     deleteFamilyMember,
+    name,
   } = useMyContext();
 
   const loadFamilyMember = (e) => {
@@ -35,12 +39,21 @@ const FamilyMemberTabs = () => {
 
   return (
     <>
-      <Button variant="standard" onClick={addFamilyMember}>
-        +
-      </Button>
       <ul>
+        <li className={styles.tabs}>
+          <IconButton
+            variant="standard"
+            onClick={addFamilyMember}
+            disableRipple
+          >
+            <AddIcon />
+          </IconButton>
+        </li>
         {members.map((member) => (
-          <li key={member.name}>
+          <li
+            key={member.name}
+            className={member.name === name ? styles.selected : styles.tabs}
+          >
             <Button
               variant="standard"
               onClick={loadFamilyMember}
@@ -50,10 +63,17 @@ const FamilyMemberTabs = () => {
             </Button>
           </li>
         ))}
+
+        <li className={styles.tabs}>
+          <IconButton
+            variant="standard"
+            onClick={deleteFamilyMember}
+            disableRipple
+          >
+            <DeleteIcon color="action" />
+          </IconButton>
+        </li>
       </ul>
-      <Button variant="standard" onClick={deleteFamilyMember}>
-        Delete
-      </Button>
     </>
   );
 };

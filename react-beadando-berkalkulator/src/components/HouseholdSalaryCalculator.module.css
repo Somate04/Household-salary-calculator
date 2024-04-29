@@ -1,0 +1,20 @@
+.twocolumns {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* columns */
+.twocolumns > * {
+  width: 100%;
+  padding: 1rem;
+  background-color: rgb(226, 232, 240);
+  border: 10px solid white;
+  border-radius: 25px;
+}
+
+/* tablet breakpoint */
+@media (min-width: 768px) {
+  .twocolumns > * {
+    width: 50%;
+  }
+}
