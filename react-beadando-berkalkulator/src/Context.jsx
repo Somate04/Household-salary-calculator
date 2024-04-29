@@ -43,9 +43,9 @@ function useService() {
 
   const deleteFamilyMember = () => {
     if (name !== "") {
-      const index = members.findIndex((member) => member.name === name);
+      const toDelete = members.find((member) => member.name === name);
       members.map((member) =>
-        setMembers(members.filter((m) => member.name !== m.name))
+        setMembers(members.filter((m) => m.name !== toDelete.name))
       );
     }
   };
