@@ -41,8 +41,17 @@ function useService() {
     setIsOpen(false);
   };
 
+  const deleteFamilyMember = () => {
+    if (name !== "") {
+      const index = members.findIndex((member) => member.name === name);
+      members.map((member) =>
+        setMembers(members.filter((m) => member.name !== m.name))
+      );
+    }
+  };
+
   const addFamilyMember = () => {
-    if (name !== null) {
+    if (name !== "") {
       const index = members.findIndex((member) => member.name === name);
       if (index !== -1) {
         setMembers((prevMembers) => {
@@ -115,6 +124,7 @@ function useService() {
     SelectMember,
     saveBrutto,
     brutto,
+    deleteFamilyMember,
   };
 
   return Service;

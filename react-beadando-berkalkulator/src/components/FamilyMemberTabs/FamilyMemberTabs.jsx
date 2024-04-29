@@ -14,6 +14,7 @@ const FamilyMemberTabs = () => {
     setFamilyValue1,
     setFamilyValue2,
     isCheckedFamily,
+    deleteFamilyMember,
   } = useMyContext();
 
   const loadFamilyMember = (e) => {
@@ -50,6 +51,9 @@ const FamilyMemberTabs = () => {
           </li>
         ))}
       </ul>
+      <Button variant="standard" onClick={deleteFamilyMember}>
+        Delete
+      </Button>
     </>
   );
 };
