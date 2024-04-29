@@ -11,14 +11,18 @@ Modal.setAppElement(root);
 function Discounts() {
   const {
     isSzja25,
+    szja25Discount,
     isPersonal,
+    personalDiscount,
     isNewlyWed,
+    newlyWedDiscount,
     modalIsOpen,
     setModal,
     closeModal,
     checkedNewlyWed,
     isCheckedNewlyWed,
     isCheckedFamily,
+    checkedFamily,
   } = useMyContext();
   const [checked25, setChecked25] = useState(false);
   const [checkedPersonal, setCheckedPersonal] = useState(false);
@@ -48,16 +52,25 @@ function Discounts() {
       <h2>Kedvezmények</h2>
       <FormGroup>
         <FormControlLabel
-          control={<Switch onChange={HandleChange25} />}
+          control={
+            <Switch onChange={HandleChange25} checked={szja25Discount} />
+          }
           label="25 éven aluliak SZJA kedvezménye"
           id="szja25"
         />
         <FormControlLabel
-          control={<Switch onChange={HandleChangePersonal} />}
+          control={
+            <Switch
+              onChange={HandleChangePersonal}
+              checked={personalDiscount}
+            />
+          }
           label="Személyi adókedvezmény"
         />
         <FormControlLabel
-          control={<Switch onChange={HandleChangeNewlyWed} />}
+          control={
+            <Switch onChange={HandleChangeNewlyWed} checked={checkedNewlyWed} />
+          }
           label="Friss házasok kedvezménye"
         />
         <Entitled />
@@ -71,7 +84,9 @@ function Discounts() {
           <DateInput />
         </Modal>
         <FormControlLabel
-          control={<Switch onChange={HandleChangeFamily} />}
+          control={
+            <Switch onChange={HandleChangeFamily} checked={checkedFamily} />
+          }
           label="Családi kedvezmény"
         />
         <FamilyNumber />

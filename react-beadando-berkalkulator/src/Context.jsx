@@ -42,7 +42,6 @@ function useService() {
   };
 
   const addFamilyMember = () => {
-    console.log(name);
     if (name !== null) {
       const index = members.findIndex((member) => member.name === name);
       if (index !== -1) {
@@ -56,7 +55,9 @@ function useService() {
               netto: netto,
               szja: szja25Discount,
               personalDiscount: personalDiscount,
+              checkedNewlyWed: checkedNewlyWed,
               newlyWed: newlyWedDiscount,
+              checkedFamily: checkedFamily,
               familyValue1: familyValue1,
               familyValue2: familyValue2,
             },
@@ -73,7 +74,9 @@ function useService() {
               netto: netto,
               szja: szja25Discount,
               personalDiscount: personalDiscount,
+              checkedNewlyWed: checkedNewlyWed,
               newlyWed: newlyWedDiscount,
+              checkedFamily: checkedFamily,
               familyValue1: familyValue1,
               familyValue2: familyValue2,
             },

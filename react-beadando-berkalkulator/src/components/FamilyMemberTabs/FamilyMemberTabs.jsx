@@ -2,13 +2,32 @@ import { useMyContext } from "../../Context";
 import { Button } from "@mui/material";
 
 const FamilyMemberTabs = () => {
-  const { members, addFamilyMember, saveName, saveBrutto } = useMyContext();
+  const {
+    members,
+    addFamilyMember,
+    saveName,
+    saveBrutto,
+    isSzja25,
+    isPersonal,
+    isCheckedNewlyWed,
+    isNewlyWed,
+    setFamilyValue1,
+    setFamilyValue2,
+    isCheckedFamily,
+  } = useMyContext();
 
   const loadFamilyMember = (e) => {
     members.map((member) => {
       if (member.name === e.target.id) {
         saveName(member.name);
         saveBrutto(member.brutto);
+        isSzja25(member.szja);
+        isPersonal(member.personalDiscount);
+        isCheckedNewlyWed(member.checkedNewlyWed);
+        isNewlyWed(member.newlyWed);
+        isCheckedFamily(member.checkedFamily);
+        setFamilyValue1(member.familyValue1);
+        setFamilyValue2(member.familyValue2);
       }
     });
   };
