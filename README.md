@@ -40,7 +40,7 @@ Tehát léteznek a következő komponensek:
 - [x] Személyek módosítása: A személyek listájában egy személyre kattintva megjelenik a nettó és bruttó bére a Bérkalkulátorban, és a nevét tudjuk módosítani. (4pt)
 - [x] Személyek módosítása: A személyhez tartozó minden adat megjelenik a Bérkalkulátorban, és ezeket módosítva felül tudjuk írni az eredeti személy adatait. (2pt)
 - [x] Személyek törlése:A személyeket a listából lehet törölni (1pt)
-- [ ] Igényes megjelenés (2pt)
+- [x] Igényes megjelenés (2pt)
 
 - Plusz pontok:
 
