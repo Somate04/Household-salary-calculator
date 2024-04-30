@@ -1,6 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import { useMyContext } from "../../../Context";
 import { useState, useRef } from "react";
+import { grey } from "@mui/material/colors";
 
 function DateInput() {
   const { closeModal, isNewlyWed, newlyWedDiscount } = useMyContext();
@@ -21,8 +22,8 @@ function DateInput() {
   };
 
   return (
-    <>
-      <p>
+    <div>
+      <p style={{ color: "grey" }}>
         A kedvezmény először a házasságkötés követő hónapra vehető igénybe és a
         házassági életközösség allat legfeljebb 24 hónapon keresztül jár.
       </p>
@@ -35,7 +36,7 @@ function DateInput() {
         helperText="Például: 2000/10/25"
       />
       <Button onClick={closeModal}>Megerősít</Button>
-    </>
+    </div>
   );
 }
 

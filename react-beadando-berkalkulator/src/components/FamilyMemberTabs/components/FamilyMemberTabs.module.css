@@ -1,3 +1,13 @@
+.container {
+  width: fit-content;
+  height: fit-content;
+  background-color: rgb(226, 232, 240);
+  padding: 4px;
+  padding-bottom: 0;
+  border-radius: 15px;
+  margin-left: 3%;
+}
+
 .tabs {
   display: inline;
   background-color: rgb(226, 232, 240);
@@ -5,6 +15,15 @@
 }
 .tabs:hover {
   background-color: white;
+}
+.tabs:last-of-type {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.tabs:first-of-type {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 
 .selected {

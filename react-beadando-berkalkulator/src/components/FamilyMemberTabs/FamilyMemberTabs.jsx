@@ -39,7 +39,7 @@ const FamilyMemberTabs = () => {
 
   return (
     <>
-      <ul>
+      <ul className={styles.container}>
         <li className={styles.tabs}>
           <IconButton
             variant="standard"

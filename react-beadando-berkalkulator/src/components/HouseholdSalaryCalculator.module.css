@@ -1,6 +1,7 @@
 .twocolumns {
   display: flex;
   flex-wrap: wrap;
+  margin-left: 2%;
 }
 
 /* columns */

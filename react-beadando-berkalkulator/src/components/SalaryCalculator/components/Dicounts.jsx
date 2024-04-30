@@ -1,9 +1,16 @@
-import { Switch, FormControlLabel, FormGroup, Button } from "@mui/material";
+import {
+  Switch,
+  FormControlLabel,
+  FormGroup,
+  Button,
+  Backdrop,
+} from "@mui/material";
 import { useState } from "react";
 import DateInput from "./DateInput";
 import { useMyContext } from "../../../Context";
 import Modal from "react-modal";
 import Entitled from "./Entitled";
+import styles from "./Entitled.module.css";
 import FamilyNumber from "./FamilyNumber";
 
 Modal.setAppElement(root);
@@ -47,16 +54,29 @@ function Discounts() {
     setModal(true);
   };
 
+  const modalStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      backgroundColor: "rgb(226, 232, 240)",
+      borderRadius: "15px",
+      borderColor: "rgb(226, 232, 240)",
+    },
+  };
   return (
     <>
-      <h2>Kedvezmények</h2>
+      <h3>Kedvezmények</h3>
       <FormGroup>
         <FormControlLabel
           control={
             <Switch
               onChange={HandleChange25}
               checked={szja25Discount}
-              color="info"
+              color="success"
             />
           }
           label="25 éven aluliak SZJA kedvezménye"
@@ -67,29 +87,41 @@ function Discounts() {
             <Switch
               onChange={HandleChangePersonal}
               checked={personalDiscount}
-              color="info"
+              color="success"
             />
           }
           label="Személyi adókedvezmény"
         />
-        <FormControlLabel
-          control={
-            <Switch
-              onChange={HandleChangeNewlyWed}
-              checked={checkedNewlyWed}
-              color="info"
+        <ul className={styles.list}>
+          <li>
+            <FormControlLabel
+              control={
+                <Switch
+                  onChange={HandleChangeNewlyWed}
+                  checked={checkedNewlyWed}
+                  color="success"
+                />
+              }
+              label="Friss házasok kedvezménye"
             />
-          }
-          label="Friss házasok kedvezménye"
-        />
-        <Entitled />
-        <Button
-          onClick={openModal}
-          style={{ display: checkedNewlyWed ? "block" : "none" }}
+          </li>
+          <li>
+            <Button
+              onClick={openModal}
+              style={{ display: checkedNewlyWed ? "block" : "none" }}
+            >
+              <span className={styles.button}>Dátum hozzáadása</span>
+            </Button>
+          </li>
+          <li>
+            <Entitled />
+          </li>
+        </ul>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={modalStyles}
         >
-          Dátum hozzáadása
-        </Button>
-        <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
           <DateInput />
         </Modal>
         <FormControlLabel
@@ -97,7 +129,7 @@ function Discounts() {
             <Switch
               onChange={HandleChangeFamily}
               checked={checkedFamily}
-              color="info"
+              color="success"
             />
           }
           label="Családi kedvezmény"

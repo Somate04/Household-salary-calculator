@@ -1,0 +1,14 @@
+.result {
+  font-weight: bold;
+  font-size: 2em;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  text-align: center;
+  padding-top: 2%;
+}
+
+.number {
+  background-color: rgb(51, 65, 85);
+  padding: 10px;
+  border-radius: 15px;
+  color: white;
+}

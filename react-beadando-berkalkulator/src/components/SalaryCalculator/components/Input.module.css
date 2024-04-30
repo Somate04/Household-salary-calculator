@@ -1,0 +1,24 @@
+.sub {
+  color: grey;
+}
+
+#helper {
+  padding-top: 2%;
+  color: grey;
+  font-size: smaller;
+  font-style: italic;
+  width: 40%;
+  margin-left: 40%;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

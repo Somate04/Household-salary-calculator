@@ -33,19 +33,35 @@ function FamilyNumber() {
 
   return (
     <form style={{ display: checkedFamily ? "block" : "none" }}>
-      <Button className={styles.input} onClick={() => changeValue1(1)}>
+      <Button
+        className={styles.input}
+        onClick={() => changeValue1(1)}
+        color="success"
+      >
         +
       </Button>
       <p className={styles.input}>{familyValue1}</p>
-      <Button className={styles.input} onClick={() => changeValue1(-1)}>
+      <Button
+        className={styles.input}
+        onClick={() => changeValue1(-1)}
+        color="error"
+      >
         -
       </Button>
       <p className={styles.input}>Eltartott, ebből kedvezményezett: </p>
-      <Button className={styles.input} onClick={() => changeValue2(1)}>
+      <Button
+        className={styles.input}
+        onClick={() => changeValue2(1)}
+        color="success"
+      >
         +
       </Button>
       <p className={styles.input}>{familyValue2}</p>
-      <Button className={styles.input} onClick={() => changeValue2(-1)}>
+      <Button
+        className={styles.input}
+        onClick={() => changeValue2(-1)}
+        color="error"
+      >
         -
       </Button>
     </form>

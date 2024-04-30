@@ -1,7 +1,8 @@
 import { Slider, Button } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useMyContext } from "../../../Context";
 import TextInput from "./TextInput";
+import styles from "./Input.module.css";
 
 function Input() {
   const {
@@ -127,17 +128,31 @@ function Input() {
 
   return (
     <>
-      <TextInput type={"text"} onChange={nameChange} value={name} />
-      <p>Add meg a családtag nevét!</p>
-      <br />
-      <TextInput
-        refValue={bruttoRef}
-        type={"number"}
-        value={brutto}
-        onChange={HandleChange}
-      />
-      <br />
-      <p>Add meg a bruttó béredet!</p>
+      <div className={styles.row}>
+        <div className={styles.column}>
+          <h3>Családtag neve</h3>
+          <TextInput type={"text"} onChange={nameChange} value={name} />
+          <p className={styles.sub}>Add meg a családtag nevét!</p>
+          <br />
+          <h3>Bruttó bér</h3>
+          <TextInput
+            refValue={bruttoRef}
+            type={"number"}
+            value={brutto}
+            onChange={HandleChange}
+          />
+          <br />
+          <p className={styles.sub}>Add meg a bruttó béredet!</p>
+        </div>
+        <div
+          className={styles.column}
+          style={{ color: "grey", fontStyle: "italic", fontSize: "small" }}
+        >
+          Családtag mentéséhez/módosításához nyomja meg a + gombot. Törlésehez
+          először válassza ki a törölni kívánt családtagot majd nyomja meg a
+          kuka gombot.
+        </div>
+      </div>
       <Slider
         size="small"
         step={1000}
