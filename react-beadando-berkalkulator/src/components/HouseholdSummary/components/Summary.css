@@ -1,0 +1,22 @@
+table {
+  width: 75%;
+  margin-left: 12.5%;
+  margin-top: 20%;
+  border: 1px solid white;
+}
+
+thead {
+  background-color: white;
+}
+
+tbody tr {
+  background-color: white;
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgb(226, 232, 240);
+}
+
+tfoot {
+  background-color: white;
+}

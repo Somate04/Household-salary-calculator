@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, colors } from "@mui/material";
 import { useMyContext } from "../../../Context";
 import { useState, useRef } from "react";
 import { grey } from "@mui/material/colors";
@@ -23,7 +23,7 @@ function DateInput() {
 
   return (
     <div>
-      <p style={{ color: "grey" }}>
+      <p style={{ color: "grey", paddingBottom: 5 }}>
         A kedvezmény először a házasságkötés követő hónapra vehető igénybe és a
         házassági életközösség allat legfeljebb 24 hónapon keresztül jár.
       </p>
@@ -34,8 +34,16 @@ function DateInput() {
         inputRef={dateRef}
         onChange={changeHandler}
         helperText="Például: 2000/10/25"
+        style={{ marginBottom: 10, marginTop: 10 }}
       />
-      <Button onClick={closeModal}>Megerősít</Button>
+      <br />
+      <div
+        style={{ backgroundColor: "rgb(46, 125, 50)", width: "fit-content" }}
+      >
+        <Button onClick={closeModal} variant="contained" color="success">
+          Mentés
+        </Button>
+      </div>
     </div>
   );
 }

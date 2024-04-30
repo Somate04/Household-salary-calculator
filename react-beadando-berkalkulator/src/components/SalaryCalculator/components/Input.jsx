@@ -132,7 +132,7 @@ function Input() {
         <div className={styles.column}>
           <h3>Családtag neve</h3>
           <TextInput type={"text"} onChange={nameChange} value={name} />
-          <p className={styles.sub}>Add meg a családtag nevét!</p>
+          <p className={styles.sub}>Addja meg a családtag nevét!</p>
           <br />
           <h3>Bruttó bér</h3>
           <TextInput
@@ -142,7 +142,7 @@ function Input() {
             onChange={HandleChange}
           />
           <br />
-          <p className={styles.sub}>Add meg a bruttó béredet!</p>
+          <p className={styles.sub}>Addja meg a bruttó bérét!</p>
         </div>
         <div
           className={styles.column}

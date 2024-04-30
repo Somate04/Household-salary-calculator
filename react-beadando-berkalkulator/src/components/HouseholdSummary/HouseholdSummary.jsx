@@ -1,4 +1,5 @@
 import { useMyContext } from "../../Context";
+import "./components/Summary.css";
 
 const HouseholdSummary = () => {
   const { members } = useMyContext();
@@ -7,26 +8,42 @@ const HouseholdSummary = () => {
     sum += member.netto;
   });
   return (
-    <table>
-      <tbody>
-        {members.map((member) => (
-          <tr key={member.name}>
-            <td>{member.name}</td>
-            <td>{member.netto}</td>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Családtag</th>
+            <th>Nettó bér</th>
           </tr>
-        ))}
-        <tr key="Total">
-          <td>Összesen</td>
-          <td>
-            {Intl.NumberFormat("hu-HU", {
-              style: "currency",
-              currency: "HUF",
-              maximumSignificantDigits: 6,
-            }).format(sum)}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {members.map((member) => (
+            <tr key={member.name}>
+              <td>{member.name}</td>
+              <td>
+                {Intl.NumberFormat("hu-HU", {
+                  style: "currency",
+                  currency: "HUF",
+                  maximumSignificantDigits: 6,
+                }).format(member.netto)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+        <tfoot>
+          <tr key="Total">
+            <td>Összesen</td>
+            <td>
+              {Intl.NumberFormat("hu-HU", {
+                style: "currency",
+                currency: "HUF",
+                maximumSignificantDigits: 6,
+              }).format(sum)}
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   );
 };
 
